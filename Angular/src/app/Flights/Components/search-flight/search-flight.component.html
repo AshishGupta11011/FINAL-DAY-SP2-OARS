@@ -1,0 +1,48 @@
+<p>search-flight works!</p>
+<div>
+
+    <div class="container">
+        <div class="form-group">
+         <label for="usr">Source:</label>
+         <input type="text" #SourceInput class="form-control" size="50">
+         <label for="usr">Destinstion:</label>
+         <input type="text" #DestinationInput class="form-control" size="5">
+         </div>
+         <!-- <button type="button" (click) = "search=(titleInput.value)" class="btn btn-primary">Show Button value!</button> -->
+       
+       <button class="btn btn-primary" (click)="search(SourceInput.value,DestinationInput.value)" style="float: right;margin:5px">search Flights</button><br>
+       
+       <div style="width: 400px;margin-top: 70px;">
+           
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Flight ID</th>
+            <th scope="col">Flight Name</th>
+            <th scope="col">Source</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Available Seats</th>
+            <th scope="col">Baggage Limit</th>
+            <th scope="col">Arrival Time</th>
+            <th scope="col">Departure Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let flight of flightdata">
+            <th scope="row">{{flight.FlightId}}</th>
+            <td>{{flight.FlightName}}</td>
+            <td>{{flight.Source}}</td>
+            <td>{{flight.Destination}}</td>
+            <td>{{flight.AvailableSeats}}</td>
+            <td>{{flight.BaggageLimit}}</td>
+            <td>{{flight.ArrivalTime}}</td>
+            <td>{{flight.DepartureTime}}</td>
+            <td><button class="button btn-primary" (click) = "onBook(flight.FlightId,flight.Source,flight.Destination)">Book</button></td>
+            <!-- <a [routerLink]="['edit',{'FlightId':flight.FlightId}]"><i class="fas fa-edit"></i></a> -->
+            <!-- <i class="fas fa-trash-alt" (click)="delete(flight.FlightId)"></i> -->
+          </tr>
+        </tbody>
+      </table>
+       </div>
+
+</div>
